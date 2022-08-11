@@ -1,0 +1,67 @@
+<template>
+  <a href="#!" class="h-full" @click.prevent="">
+    <strong>title news</strong>
+    <span>timing news</span>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores cum veniam earum,
+      et ratione atque.
+    </p>
+  </a>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style scoped lang="scss">
+a {
+  display: flex;
+  flex-direction: column;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 30px;
+  margin-bottom: 20px;
+  color: #000000;
+  line-height: 32px;
+  background: #ffffff;
+  border: 1px solid #d9d9d9;
+  border-top: 4px solid #c0cf13;
+  padding: 42px;
+  min-height: 250px;
+  margin: 0;
+  align-items: stretch;
+  transition: all 0.5s ease;
+  strong {
+    color: #48a8c0;
+    font-size: 12px;
+    line-height: 12px;
+    display: block;
+    margin-bottom: 13px;
+  }
+  span {
+    color: #333f48;
+    margin: 0 0 3px 0;
+    font-size: 12px;
+    line-height: 12px;
+    display: flex;
+  }
+  p {
+    font-family: "Lato", sans-serif;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 30px;
+    margin-bottom: 20px;
+    line-height: 32px;
+    color: #000000;
+  }
+  &:hover {
+    border-top-color: #48a8c0;
+    color: #48a8c0;
+    text-decoration: none;
+    box-shadow: 0 2px 30px 0 rgb(0 0 0 / 20%);
+    p {
+      color: #48a8c0;
+    }
+  }
+}
+</style>

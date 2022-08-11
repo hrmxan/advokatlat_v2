@@ -1,0 +1,73 @@
+{
+  "name": "advokatlar_v2",
+  "version": "0.2.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/locales/**/*.json\""
+  },
+  "dependencies": {
+    "aos": "^2.3.4",
+    "bootstrap": "^5.2.0",
+    "bootstrap-vue": "^2.22.0",
+    "core-js": "^3.8.3",
+    "leaflet": "^1.8.0",
+    "vue": "^2.7.8",
+    "vue-aos": "^2.3.0",
+    "vue-awesome-swiper": "^4.1.1",
+    "vue-axios": "^3.4.1",
+    "vue-i18n": "^8.26.3",
+    "vue-multiselect": "^2.1.6",
+    "vue-observe-visibility": "^1.0.0",
+    "vue-router": "^3.5.1",
+    "vue-toast-notification": "^0.6.3",
+    "vue-toastification": "^1.7.14",
+    "vue2-leaflet": "^2.7.1",
+    "vuex": "^3.6.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@intlify/vue-i18n-loader": "^3.2.0",
+    "@tailwindcss/postcss7-compat": "^2.2.17",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-vuex": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "autoprefixer": "^9.8.8",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "postcss": "^7.0.39",
+    "sass": "^1.54.3",
+    "sass-loader": "^13.0.2",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
+    "vue-cli-plugin-i18n": "~2.3.1",
+    "vue-template-compiler": "^2.6.14"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "@babel/eslint-parser"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "keywords": [
+    "swiper",
+    "vue-awesome-swiper"
+  ]
+}
