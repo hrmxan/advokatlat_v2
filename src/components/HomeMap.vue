@@ -1,7 +1,12 @@
 <template>
   <section class="map mb-4">
     <div class="px-3 h-full">
-      <l-map style="height: 100%" :zoom="zoom" :center="center">
+      <l-map
+        class="pointer-events-none"
+        style="height: 100%"
+        :zoom="zoom"
+        :center="center"
+      >
         <l-tile-layer :url="url" :icon="icon"></l-tile-layer>
         <l-marker :lat-lng="markerLatLng" :icon="icon"></l-marker>
         <l-marker :lat-lng="markerLatLng2" :icon="icon"></l-marker>
@@ -68,7 +73,7 @@ export default {
     return {
       geojson: null,
       url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-      zoom: 5,
+      zoom: 5.5,
       center: [41.688773766291966, 64.38806273571723],
       markerLatLng: [41.31160606176791, 69.27701201083019],
       markerLatLng2: [41.31161078261277, 69.28025231586949],

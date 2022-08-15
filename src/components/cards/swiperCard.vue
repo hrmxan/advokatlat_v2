@@ -1,11 +1,11 @@
 <template>
-  <a href="#!" class="mx-3" @click.prevent="">
+  <router-link to="/news/toswiper" class="mx-3">
     <p>Lorem, ipsum dolor.</p>
     <strong>
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet fugit optio facere
       sint rerum! Doloribus?
     </strong>
-  </a>
+  </router-link>
 </template>
 
 <script>

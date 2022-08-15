@@ -3,13 +3,13 @@
     <div class="container mx-auto px-3">
       <h2 class="my-5">{{ $t("videos") }}</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 -mx-2">
-        <div class="col-span-1 px-2 mb-4">
+        <div class="col-span-1 px-2 mb-4" data-aos="fade-up">
           <video-card></video-card>
         </div>
-        <div class="col-span-1 px-2 mb-4">
+        <div class="col-span-1 px-2 mb-4" data-aos="fade-up" data-aos-delay="200">
           <video-card></video-card>
         </div>
-        <div class="col-span-1 px-2 mb-4">
+        <div class="col-span-1 px-2 mb-4" data-aos="fade-up" data-aos-delay="400">
           <video-card></video-card>
         </div>
       </div>

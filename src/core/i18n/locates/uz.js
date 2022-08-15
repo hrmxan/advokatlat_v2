@@ -70,4 +70,5 @@ export default {
     subtitle:
       "Majmua imom Abu Bakr Muhammad ibn Ali Ismoil ash-Qaffol Shoshiy qabri atrofida shakllangan",
   },
+  search: "Qidirish",
 };

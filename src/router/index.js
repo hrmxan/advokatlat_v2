@@ -1,44 +1,56 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/HomeView.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Home from "@/views/HomeView.vue";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
+    path: "/",
+    name: "Home",
     component: Home,
     children: [
       {
-        path: '',
-        name: 'Main',
-        component: () => import('../views/MainView.vue')
+        path: "",
+        name: "Main",
+        component: () => import("@/views/MainView.vue"),
       },
       {
-        path: 'news',
-        name: 'News',
-        component: () => import('../views/NewsView.vue')
+        path: "news",
+        name: "News",
+        component: () => import("@/views/NewsView.vue"),
+        children: [
+          {
+            path: "",
+            name: "NewsMain",
+            component: () => import("@/views/NewsMain.vue"),
+          },
+          {
+            path: ":id",
+            name: "NewsItem",
+            component: () => import("@/views/NewsItem.vue"),
+          },
+        ],
       },
       {
-        path: 'lawyers',
-        name: 'Lawyers',
-        component: () => import('../views/LawyersView.vue')
-      }
-    ]
-  }
-]
+        path: "lawyers",
+        name: "Lawyers",
+        component: () => import("@/views/LawyersView.vue"),
+      },
+    ],
+  },
+];
 
 const router = new VueRouter({
-  mode: 'history',
-  scrollBehavior (to, from, savedPosition) {
+  mode: "history",
+  scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
-      return savedPosition
+      return savedPosition;
     } else {
-      return { x: 0, y: 0 }
+      return { x: 0, y: 0 };
     }
   },
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

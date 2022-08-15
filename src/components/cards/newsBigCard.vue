@@ -1,8 +1,8 @@
 <template>
-  <a href="#!" class="mb-4" @click.prevent="">
+  <router-link to="/news/big" class="mb-4">
     <h2 class="mb-4">Talent Mandatory. Office Optional.</h2>
     <p>View our work from anywhere policy</p>
-  </a>
+  </router-link>
 </template>
 
 <script>

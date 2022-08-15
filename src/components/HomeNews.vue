@@ -2,41 +2,35 @@
   <section class="bg-bgdarkblue">
     <div class="slideBody">
       <div class="container px-3 mx-auto">
-        <h1>{{ $t("news") }}</h1>
+        <h1 data-aos="zoom-in">{{ $t("news") }}</h1>
       </div>
       <swiper :options="myOptions">
-        <swiper-slide>
-          <swiper-card></swiper-card>
-        </swiper-slide>
-        <swiper-slide>
-          <swiper-card></swiper-card>
-        </swiper-slide>
-        <swiper-slide>
-          <swiper-card></swiper-card>
-        </swiper-slide>
-        <swiper-slide>
-          <swiper-card></swiper-card>
-        </swiper-slide>
-        <swiper-slide>
-          <swiper-card></swiper-card>
+        <swiper-slide v-for="(card, index) in 6" :key="index">
+          <swiper-card data-aos="fade-left" :data-aos-delay="200 * index"></swiper-card>
         </swiper-slide>
       </swiper>
       <div class="container px-3 py-5 mx-auto flex justify-center">
-        <router-link class="mt-8" to="/news">{{ $t("allNews") }}</router-link>
+        <router-link data-aos="zoom-in" class="mt-8" to="/news">{{
+          $t("allNews")
+        }}</router-link>
       </div>
       <!--  -->
     </div>
     <div class="container pb-14 mx-auto px-3 flex flex-col items-center">
-      <h2 class="search_title mt-14 mb-6">{{ $t("mahsusAdvokat") }}</h2>
+      <h2 data-aos="zoom-in" class="search_title mt-14 mb-6">
+        {{ $t("mahsusAdvokat") }}
+      </h2>
       <div class="input">
-        <form class="flex flex-col w-full">
-          <input type="text" />
+        <form data-aos="zoom-in" data-aos-delay="200" class="flex flex-col w-full">
+          <input type="text" :placeholder="$t('search')" />
           <button @click.prevent="" type="submit">
             <img src="@/assets/img/search-icon.png" />
           </button>
         </form>
       </div>
-      <router-link to="/lawyers" class="mt-5">{{ $t("allAttorneys") }}</router-link>
+      <router-link data-aos="zoom-in" data-aos-delay="400" to="/lawyers" class="mt-5">{{
+        $t("allAttorneys")
+      }}</router-link>
     </div>
   </section>
 </template>

@@ -1,12 +1,12 @@
 <template>
-  <a href="#!" class="h-full" @click.prevent="">
+  <router-link to="/news/card" class="h-full" @click.prevent="">
     <strong>title news</strong>
     <span>timing news</span>
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores cum veniam earum,
       et ratione atque.
     </p>
-  </a>
+  </router-link>
 </template>
 
 <script>

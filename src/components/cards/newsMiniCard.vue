@@ -1,8 +1,8 @@
 <template>
-  <a href="#!" @click.prevent="">
+  <router-link to="/news/minicard">
     <h2>We have you covered during this time of crisis.</h2>
     <p>Visit our COVID-19 Resource Center</p>
-  </a>
+  </router-link>
 </template>
 
 <script>

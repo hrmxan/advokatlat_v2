@@ -70,4 +70,5 @@ export default {
     subtitle:
       "The complex was formed around the tomb of Imam Abu Bakr Muhammad ibn Ali Ismail al-Qaffal Shoshi",
   },
+  search: "Search",
 };

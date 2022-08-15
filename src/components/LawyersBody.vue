@@ -2,40 +2,12 @@
   <section>
     <div class="container mx-auto px-3">
       <div class="grid md:grid-cols-2 lg:grid-cols-3 -mx-3">
-        <div class="col-span-1 px-3 mb-5">
-          <lawyer-card />
-        </div>
-        <div class="col-span-1 px-3 mb-5">
-          <lawyer-card />
-        </div>
-        <div class="col-span-1 px-3 mb-5">
-          <lawyer-card />
-        </div>
-        <div class="col-span-1 px-3 mb-5">
-          <lawyer-card />
-        </div>
-        <div class="col-span-1 px-3 mb-5">
-          <lawyer-card />
-        </div>
-        <div class="col-span-1 px-3 mb-5">
-          <lawyer-card />
-        </div>
-        <div class="col-span-1 px-3 mb-5">
-          <lawyer-card />
-        </div>
-        <div class="col-span-1 px-3 mb-5">
-          <lawyer-card />
-        </div>
-        <div class="col-span-1 px-3 mb-5">
-          <lawyer-card />
-        </div>
-        <div class="col-span-1 px-3 mb-5">
-          <lawyer-card />
-        </div>
-        <div class="col-span-1 px-3 mb-5">
-          <lawyer-card />
-        </div>
-        <div class="col-span-1 px-3 mb-5">
+        <div
+          class="col-span-1 px-3 mb-5"
+          v-for="(lawyer, index) in 18"
+          :key="index"
+          data-aos="fade-up"
+        >
           <lawyer-card />
         </div>
       </div>
