@@ -120,7 +120,6 @@ export default {
       this.$router.push("/");
     },
     changeLang(l) {
-      console.log("lang", this.lang);
       localStorage.setItem("lang", l);
       this.$i18n.locale = l;
       this.lang = this.$t(`langs.${l}`);
@@ -137,6 +136,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+* {
+  color: #f8fafc;
+}
 header {
   z-index: 200;
 }

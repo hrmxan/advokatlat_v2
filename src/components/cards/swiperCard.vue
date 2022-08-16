@@ -1,15 +1,27 @@
 <template>
-  <router-link to="/news/toswiper" class="mx-3">
-    <p>Lorem, ipsum dolor.</p>
-    <strong>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet fugit optio facere
-      sint rerum! Doloribus?
-    </strong>
+  <router-link :to="`/news/${id}`" class="mx-3">
+    <p>{{ title }}</p>
+    <div class="text" v-html="text"></div>
   </router-link>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    title: {
+      type: String,
+    },
+    timing: {
+      type: String,
+    },
+    text: {
+      type: String,
+    },
+    id: {
+      type: Number,
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -26,6 +38,7 @@ a {
   padding: 37px;
   text-decoration: none;
   transition: 0.5s ease;
+  width: 100%;
   p {
     color: #48a8c0;
     font-size: 12px;
@@ -33,10 +46,17 @@ a {
     line-height: 16px;
     margin: 0px 0px 12px;
   }
-  strong {
+  div.text {
     font-size: 26px;
     font-weight: 400;
     line-height: 32px;
+
+    flex: 1;
+    width: 100%;
+    max-height: 100px;
+    white-space: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   &:hover {
     background: #14656b;

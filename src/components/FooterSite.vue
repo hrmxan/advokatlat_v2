@@ -94,6 +94,10 @@ export default {};
 </script>
 
 <style scoped lang="scss">
+* {
+  font-family: "Lato", sans-serif;
+  color: #f8fafc;
+}
 ul {
   li {
     display: flex;

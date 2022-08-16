@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="mainview">
     <home-bg />
     <home-news />
     <home-news-bottom />
@@ -28,4 +28,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.mainview * {
+  font-family: "Lato", sans-serif;
+  color: #f8fafc;
+}
+</style>

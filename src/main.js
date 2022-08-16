@@ -30,7 +30,7 @@ Vue.use(toast, {
 Vue.use(myToast);
 
 import ApiService from "./services/api.service";
-ApiService.init(process.env.VUE_APP_BASE_URL);
+ApiService.init(process.env.VUE_APP_ROOT_API);
 
 export const bus = new Vue();
 

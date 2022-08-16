@@ -1,19 +1,31 @@
 <template>
   <div id="app">
+    <loader v-if="isLoading" />
     <router-view />
   </div>
 </template>
 
 <script>
+import loader from "./components/loaderView.vue";
+import { mapState } from "vuex";
 export default {
-  components: {},
+  components: {
+    loader,
+  },
+  computed: {
+    ...mapState({
+      isLoading: (state) => {
+        return state.news.isLoading;
+      },
+    }),
+  },
 };
 </script>
 
 <style lang="scss">
 * {
   font-family: "Lato", sans-serif;
-  color: #f8fafc;
+  // color: #f8fafc;
 }
 body {
   background-color: #e8e8e8;

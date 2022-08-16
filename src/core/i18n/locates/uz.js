@@ -71,4 +71,7 @@ export default {
       "Majmua imom Abu Bakr Muhammad ibn Ali Ismoil ash-Qaffol Shoshiy qabri atrofida shakllangan",
   },
   search: "Qidirish",
+  goHome: "Bosh sahifaga qaytish",
+  goBack: "Orqaga qaytish",
+  pageNotFound: "Sahifa topilmadi",
 };

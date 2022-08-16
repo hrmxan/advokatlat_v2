@@ -1,48 +1,44 @@
 <template>
   <main>
-    <section class="nav_mask">
+    <section class="nav_mask pt-28">
       <div class="container mx-auto px-3">
-        <h1 class="title">Bu yerda yangiliklar maqolasini nomi bo'ladi</h1>
+        <h1 class="title">{{ news[`${localLang("title")}`] }}</h1>
         <p class="data postdata">JULY 29, 2022</p>
         <p class="from postdata">FIRM MEMORANDA</p>
       </div>
     </section>
     <section>
-      <div class="container mx-auto px-3 py-10">
-        <p class="max-w-lg text-bgdarkblue">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos enim nemo,
-          adipisci sapiente velit odit unde magnam placeat veritatis quae voluptates aut
-          quam quia ipsum deleniti laborum aliquid illo in sint porro repellat vero at
-          eveniet. Esse dolore sequi atque corrupti illo qui, sint deleniti officiis
-          voluptatibus itaque eius iure cum ducimus alias ex minus dolorem excepturi ipsum
-          labore iste cupiditate vitae? Saepe, incidunt debitis consectetur quasi atque
-          voluptate dolorem laborum aliquid quas? Ipsam atque modi autem dolore mollitia
-          doloremque explicabo consequuntur expedita itaque assumenda, eius recusandae
-          quis. Id, tempora similique. Explicabo enim architecto eligendi laudantium
-          repudiandae. Voluptas temporibus eveniet, modi hic voluptates laudantium id
-          asperiores, delectus enim explicabo, recusandae dolor itaque magnam.
-        </p>
-        <h2 class="text-bgdarkblue my-7">Lorem ipsum dolor sit amet.</h2>
-        <p class="max-w-lg text-bgdarkblue">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos enim nemo,
-          adipisci sapiente velit odit unde magnam placeat veritatis quae voluptates aut
-          quam quia ipsum deleniti laborum aliquid illo in sint porro repellat vero at
-          eveniet. Esse dolore sequi atque corrupti illo qui, sint deleniti officiis
-          voluptatibus itaque eius iure cum ducimus alias ex minus dolorem excepturi ipsum
-          labore iste cupiditate vitae? Saepe, incidunt debitis consectetur quasi atque
-          voluptate dolorem laborum aliquid quas? Ipsam atque modi autem dolore mollitia
-          doloremque explicabo consequuntur expedita itaque assumenda, eius recusandae
-          quis. Id, tempora similique. Explicabo enim architecto eligendi laudantium
-          repudiandae. Voluptas temporibus eveniet, modi hic voluptates laudantium id
-          asperiores, delectus enim explicabo, recusandae dolor itaque magnam.
-        </p>
+      <div class="text-content container mx-auto px-3 py-10">
+        <p class="max-w-lg text-bgdarkblue" v-html="news[`${localLang('text')}`]"></p>
       </div>
     </section>
   </main>
 </template>
 
 <script>
-export default {};
+import news from "../services/directory-post.service";
+import localeKey from "@/core/localKey";
+
+export default {
+  data() {
+    return {
+      news: {},
+    };
+  },
+  methods: {
+    async getById(id) {
+      let data = await news.getById(id);
+      this.news = data.data;
+    },
+    localeKey,
+    localLang(key) {
+      return this.localeKey(key, this.$i18n.locale);
+    },
+  },
+  created() {
+    this.getById(this.$route.params.id);
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -56,6 +52,9 @@ section.nav_mask {
     padding: 120px 0px 40px;
     min-height: 400px;
   }
+}
+p.text-content {
+  @apply max-w-lg text-bgdarkblue;
 }
 p {
   font-family: "Lato", sans-serif;

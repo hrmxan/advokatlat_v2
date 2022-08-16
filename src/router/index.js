@@ -30,6 +30,10 @@ const routes = [
             name: "NewsItem",
             component: () => import("@/views/NewsItem.vue"),
           },
+          {
+            path: "*",
+            redirect: { name: "NotFound" },
+          },
         ],
       },
       {
@@ -37,7 +41,20 @@ const routes = [
         name: "Lawyers",
         component: () => import("@/views/LawyersView.vue"),
       },
+      {
+        path: "*",
+        redirect: { name: "NotFound" },
+      },
     ],
+  },
+  {
+    path: "error",
+    name: "NotFound",
+    component: () => import("@/views/NotFoundView.vue"),
+  },
+  {
+    path: "*",
+    redirect: { name: "NotFound" },
   },
 ];
 

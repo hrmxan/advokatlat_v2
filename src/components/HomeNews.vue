@@ -5,8 +5,13 @@
         <h1 data-aos="zoom-in">{{ $t("news") }}</h1>
       </div>
       <swiper :options="myOptions">
-        <swiper-slide v-for="(card, index) in 6" :key="index">
-          <swiper-card data-aos="fade-left" :data-aos-delay="200 * index"></swiper-card>
+        <swiper-slide v-for="(news, index) in newslist" :key="index">
+          <swiper-card
+            :title="news[`${localLang('title')}`]"
+            :text="news[`${localLang('text')}`]"
+            :id="news.id"
+            data-aos="fade-up"
+          ></swiper-card>
         </swiper-slide>
       </swiper>
       <div class="container px-3 py-5 mx-auto flex justify-center">
@@ -39,6 +44,8 @@
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 import "swiper/css/swiper.min.css";
 import SwiperCard from "@/components/cards/swiperCard.vue";
+import { mapState, mapActions } from "vuex";
+import localeKey from "../core/localKey";
 
 export default {
   components: {
@@ -46,12 +53,20 @@ export default {
     SwiperSlide,
     SwiperCard,
   },
+  computed: {
+    ...mapState({
+      newslist: (state) => {
+        return state.news.list;
+      },
+    }),
+  },
   data() {
     SwiperCard;
     return {
       myOptions: {
         slidesPerView: 1,
-        loop: true,
+        spaceBetween: 15,
+        // loop: true,
         autoplay: {
           delay: 2000,
           disableOnInteraction: false,
@@ -72,6 +87,21 @@ export default {
         },
       },
     };
+  },
+  methods: {
+    ...mapActions({
+      getNews: "news/getList",
+    }),
+    localeKey,
+    localLang(key) {
+      return this.localeKey(key, this.$i18n.locale);
+    },
+    async getNewsList() {
+      await this.getNews();
+    },
+  },
+  created() {
+    this.getNewsList();
   },
 };
 </script>
