@@ -9,6 +9,7 @@ const state = {
   search: "",
   contId: "",
   isLoading: false,
+  countInfo: "",
 };
 
 const getters = {};
@@ -32,6 +33,9 @@ const mutations = {
   setLoading(state, isLoading) {
     state.isLoading = isLoading;
   },
+  setCountInfo(state, countInfo) {
+    state.countInfo = countInfo;
+  },
 };
 
 const actions = {
@@ -51,6 +55,16 @@ const actions = {
     try {
       res = await contragents.getListContragents(data);
       commit("setContList", res.data);
+    } finally {
+      commit("setLoading", false);
+    }
+  },
+  async countInfo({ commit }) {
+    commit("setLoading", true);
+    let res;
+    try {
+      res = await contragents.countInfo();
+      commit("setCountInfo", res.data);
     } finally {
       commit("setLoading", false);
     }

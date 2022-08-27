@@ -31,7 +31,7 @@
       <div class="container px-3 mx-auto flex items-center justify-between">
         <a href="#" @click.prevent="routeHome" class="flex items-center">
           <img src="@/assets/img/logo.png" class="w-8 mr-2" />
-          <strong class="text-slate font-lato w-52">
+          <strong class="text-slate font-lato w-52 logo-text">
             {{ $t("ORAV") }}
           </strong>
         </a>
@@ -156,6 +156,12 @@ header {
 }
 .tools {
   height: 84px;
+}
+.logo-text {
+  display: flex;
+  @media (max-width: 410px) {
+    display: none;
+  }
 }
 .drobdawn {
   background: #48a8c0;

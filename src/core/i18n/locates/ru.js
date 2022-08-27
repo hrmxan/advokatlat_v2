@@ -76,4 +76,8 @@ export default {
   goBack: "Назад",
   pageNotFound: "Страница не найдена",
   noNewsYet: "Новостей пока нет",
+  lawBureau: "Юридическая бюро",
+  lawFirm: "Адвокатская фирма",
+  countLawyer: "Количество юристов",
+  lawyerPanel: "Группа юристов",
 };

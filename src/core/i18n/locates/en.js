@@ -76,4 +76,8 @@ export default {
   goBack: "Go back",
   pageNotFound: "Page not found",
   noNewsYet: "No news yet",
+  lawBureau: "Law Bureau",
+  lawFirm: "A firm of lawyers",
+  countLawyer: "Number of lawyers",
+  lawyerPanel: "Panel of lawyers",
 };

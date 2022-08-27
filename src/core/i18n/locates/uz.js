@@ -76,4 +76,8 @@ export default {
   goBack: "Orqaga qaytish",
   pageNotFound: "Sahifa topilmadi",
   noNewsYet: "Hozircha yangiliklar yo'q",
+  lawBureau: "Advokatlar byurosi",
+  lawFirm: "Advokatlar firmasi",
+  countLawyer: "Advokatlar soni",
+  lawyerPanel: "Advokatlar hay'ati",
 };

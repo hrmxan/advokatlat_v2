@@ -107,6 +107,7 @@ export default {
     ...mapActions({
       getLawyers: "contragents/getListLawyers",
       getContragents: "contragents/getContragents",
+      countInfo: "contragents/countInfo",
     }),
     ...mapMutations({
       setConstId: "contragents/setConstId",
@@ -122,6 +123,7 @@ export default {
     async mountedStart() {
       await this.contragentsList();
       await this.getListLawyers();
+      await this.countInfo();
     },
     async contragentsList() {
       let contData = {

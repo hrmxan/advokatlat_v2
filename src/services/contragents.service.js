@@ -1,5 +1,6 @@
 import ApiService from "./api.service";
 // const main = "lawyer";
+// https://api-lawyer.adliya.uz/api/v.1/contragent/count-info?regionId=54
 
 export default {
   getListLawyers(data) {
@@ -16,5 +17,8 @@ export default {
         limit: data.limit,
       }
     );
+  },
+  countInfo() {
+    return ApiService.post(`contragent/count-info`);
   },
 };
