@@ -1,5 +1,5 @@
 import ApiService from "./api.service";
-const main = "directory-post";
+const main = "https://api.e-advokat.uz/api/v.1/directory-post";
 
 export default {
   getList() {

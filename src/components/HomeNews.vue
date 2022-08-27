@@ -1,6 +1,6 @@
 <template>
   <section class="bg-bgdarkblue">
-    <div class="slideBody">
+    <div v-if="newslist || newslist != {}" class="slideBody">
       <div class="container px-3 mx-auto">
         <h1 data-aos="zoom-in">{{ $t("news") }}</h1>
       </div>
@@ -21,14 +21,24 @@
       </div>
       <!--  -->
     </div>
+    <div v-else class="mb-16">
+      <h1 class="text-bgdarkblue">
+        {{ $t("noNewsYet") }}
+      </h1>
+    </div>
     <div class="container pb-14 mx-auto px-3 flex flex-col items-center">
       <h2 data-aos="zoom-in" class="search_title mt-14 mb-6">
         {{ $t("mahsusAdvokat") }}
       </h2>
       <div class="input">
-        <form data-aos="zoom-in" data-aos-delay="200" class="flex flex-col w-full">
-          <input type="text" :placeholder="$t('search')" />
-          <button @click.prevent="" type="submit">
+        <form
+          @submit.prevent="searchSubmit"
+          data-aos="zoom-in"
+          data-aos-delay="200"
+          class="flex flex-col w-full"
+        >
+          <input v-model="searchInput" type="text" :placeholder="$t('search')" />
+          <button type="submit">
             <img src="@/assets/img/search-icon.png" />
           </button>
         </form>
@@ -44,7 +54,7 @@
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 import "swiper/css/swiper.min.css";
 import SwiperCard from "@/components/cards/swiperCard.vue";
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapMutations } from "vuex";
 import localeKey from "../core/localKey";
 
 export default {
@@ -55,14 +65,13 @@ export default {
   },
   computed: {
     ...mapState({
-      newslist: (state) => {
-        return state.news.list;
-      },
+      newslist: (state) => state.news.list,
     }),
   },
   data() {
     SwiperCard;
     return {
+      searchInput: "",
       myOptions: {
         slidesPerView: 1,
         spaceBetween: 15,
@@ -88,9 +97,13 @@ export default {
       },
     };
   },
+  watch: {},
   methods: {
     ...mapActions({
       getNews: "news/getList",
+    }),
+    ...mapMutations({
+      setSearch: "contragents/setSearch",
     }),
     localeKey,
     localLang(key) {
@@ -98,6 +111,10 @@ export default {
     },
     async getNewsList() {
       await this.getNews();
+    },
+    searchSubmit() {
+      this.setSearch(this.searchInput);
+      this.$router.push({ name: "Lawyers" });
     },
   },
   created() {

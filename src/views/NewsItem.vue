@@ -3,8 +3,8 @@
     <section class="nav_mask pt-28">
       <div class="container mx-auto px-3">
         <h1 class="title">{{ news[`${localLang("title")}`] }}</h1>
-        <p class="data postdata">JULY 29, 2022</p>
-        <p class="from postdata">FIRM MEMORANDA</p>
+        <!-- <p class="data postdata">JULY 29, 2022</p>
+        <p class="from postdata">FIRM MEMORANDA</p> -->
       </div>
     </section>
     <section>

@@ -1,17 +1,36 @@
 <template>
-  <a href="#!" @click.prevent="">
-    <img class="mr-3" src="@/assets/img/lawyer_default.jpg" />
+  <a href="#!" @click.prevent="" class="h-full">
+    <img v-if="img" class="mr-3" :src="`https://lawyer.adliya.uz/${img}`" />
+    <img v-else class="mr-3" src="@/assets/img/lawyer_default.jpg" />
     <div class="body">
-      <strong>Type of</strong>
-      <h3 class="mb-3">Palonchiyev Tugunchi Palonchi o'gli</h3>
-      <span>Toshkent</span>
-      <p class="mt-3">BIO ga o'tish</p>
+      <strong>{{ contragent }}</strong>
+      <h3 class="mb-3">{{ fullname }}</h3>
+      <span>{{ adress }}</span>
+      <p class="mt-3">{{ contadress }}</p>
     </div>
   </a>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    fullname: {
+      type: String,
+    },
+    adress: {
+      type: String,
+    },
+    contragent: {
+      type: String,
+    },
+    contadress: {
+      type: String,
+    },
+    img: {
+      type: String,
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

@@ -4,18 +4,32 @@
       <div class="grid md:grid-cols-2 lg:grid-cols-3 -mx-3">
         <div
           class="col-span-1 px-3 mb-5"
-          v-for="(lawyer, index) in 18"
+          v-for="(lawyer, index) in lawyersList.list"
           :key="index"
           data-aos="fade-up"
         >
-          <lawyer-card />
+          <lawyer-card
+            :fullname="lawyer.fullName"
+            :adress="lawyer.contragentAddress"
+            :contragent="lawyer.contragentNameLt"
+            :contadress="lawyer[`${localLang('contragentAddressName')}`]"
+            :img="lawyer.uploadPath"
+          />
         </div>
       </div>
       <div class="pagination my-8">
         <div class="pagination-wrap">
-          <div class="prev"></div>
-          <div class="count">2 of 119</div>
-          <div class="next"></div>
+          <div class="prev" @click="page > 0 ? setPage(page - 1) : true"></div>
+          <div class="count">
+            {{ page + 1 }} of
+            {{ lawyersList.total ? Math.ceil(lawyersList.total / 20) : "0" }}
+          </div>
+          <div
+            class="next"
+            @click="
+              page + 1 < Math.ceil(lawyersList.total / 20) ? setPage(page + 1) : true
+            "
+          ></div>
         </div>
       </div>
     </div>
@@ -24,8 +38,56 @@
 
 <script>
 import lawyerCard from "./cards/lawyerCard.vue";
+import { mapState, mapActions, mapMutations } from "vuex";
+import localeKey from "@/core/localKey";
 export default {
   components: { lawyerCard },
+  data() {
+    return {
+      coontLimit: 20,
+      constSearch: "",
+    };
+  },
+  computed: {
+    ...mapState({
+      lawyersList: (state) => state.contragents.list,
+      page: (state) => state.contragents.page,
+      contId: (state) => state.contragents.contId,
+      search: (state) => state.contragents.search,
+    }),
+  },
+  watch: {
+    page() {
+      this.getListLawyers();
+      this.setPage(this.page);
+    },
+  },
+  methods: {
+    ...mapActions({
+      getLawyers: "contragents/getListLawyers",
+      getContragents: "contragents/getContragents",
+    }),
+    ...mapMutations({
+      setPage: "contragents/setPage",
+    }),
+    localeKey,
+    localLang(key) {
+      return this.localeKey(key, this.$i18n.locale);
+    },
+    async getListLawyers() {
+      let data = {
+        page: this.page,
+        limit: 20,
+      };
+      let querys = {
+        search: this.search,
+        status: "",
+        contragentId: this.contId,
+        regionId: "",
+      };
+      await this.getLawyers({ querys, data });
+    },
+  },
 };
 </script>
 

@@ -4,6 +4,7 @@ export default {
     ru: "Ru",
     en: "En",
   },
+  logIn: "Kirish",
   hello: "Assalamu alaykum",
   homeTitle: "Advokatlar tizimi",
   newsTitle: "Yangiliklar",
@@ -74,4 +75,5 @@ export default {
   goHome: "Bosh sahifaga qaytish",
   goBack: "Orqaga qaytish",
   pageNotFound: "Sahifa topilmadi",
+  noNewsYet: "Hozircha yangiliklar yo'q",
 };

@@ -5,6 +5,7 @@ export default {
     ru: "Ru",
     en: "En",
   },
+  logIn: "Login",
   hello: "Hello",
   homeTitle: "The system of lawyers",
   newsTitle: "News",
@@ -74,4 +75,5 @@ export default {
   goHome: "Go to home page",
   goBack: "Go back",
   pageNotFound: "Page not found",
+  noNewsYet: "No news yet",
 };

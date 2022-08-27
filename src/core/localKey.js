@@ -6,7 +6,7 @@ const localeKey = function (key = "name", locale = "en") {
     : locale == "en"
     ? key + "En"
     : locale == "uz"
-    ? key + "Uz"
+    ? key + "Lt"
     : "";
 };
 

@@ -5,6 +5,7 @@ export default {
     ru: "Ру",
     en: "Англ",
   },
+  logIn: "Логин",
   hello: "Привет",
   homeTitle: "Система адвокатов",
   newsTitle: "Новости",
@@ -74,4 +75,5 @@ export default {
   goHome: "На главную",
   goBack: "Назад",
   pageNotFound: "Страница не найдена",
+  noNewsYet: "Новостей пока нет",
 };

@@ -80,6 +80,12 @@
             </div>
           </label>
           <a
+            class="flex items-center h-full p-2 ml-2"
+            href="https://id.egov.uz/?client_id=e-advokat&token_id=538b3314-4e81-4171-8366-4fa02c0390d4&method=IDPW"
+          >
+            {{ $t("logIn") }}
+          </a>
+          <a
             @click.prevent="sidebarColapse = true"
             href="#!"
             class="flex w-8 h-6 sidebarOpen md:hidden"

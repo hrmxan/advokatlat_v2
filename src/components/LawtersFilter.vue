@@ -4,7 +4,12 @@
       <form>
         <div class="form-row grid grid-cols-1 sm:grid-cols-3 -mx-3">
           <div class="col-span-1 sm:col-span-3 px-3 mb-5 my_multiselect">
-            <input :placeholder="$t('FIO')" class="my__search" type="text" />
+            <input
+              v-model="filterSearch"
+              :placeholder="$t('search')"
+              class="my__search"
+              type="text"
+            />
           </div>
           <div class="col-span-1 px-3 my_multiselect my-3">
             <multiselect
@@ -31,12 +36,13 @@
           <div class="col-span-1 px-3 my_multiselect my-3">
             <multiselect
               v-model="mutahasislik"
-              :options="optionsMutahasislik"
+              :options="contList.list"
               :custom-label="nameWithLang"
               :show-labels="false"
-              :placeholder="$t('specialization')"
+              :placeholder="$t('organization')"
               :max-height="250"
               @scroll="onScroll"
+              class="contragentsSelect"
             >
               <template slot="noResult">{{ $t("noInfoFound") }}</template>
             </multiselect>
@@ -49,6 +55,7 @@
 
 <script>
 import Multiselect from "vue-multiselect";
+import { mapState, mapActions, mapMutations } from "vuex";
 import "vue-multiselect/dist/vue-multiselect.min.css";
 export default {
   components: { Multiselect },
@@ -67,50 +74,93 @@ export default {
         { name: "Tashkilot3", value: "tashkilot3" },
       ],
       mutahasislik: null,
-      optionsMutahasislik: [
-        { name: "Mutahasislik1", value: "mutahasislik1" },
-        { name: "Mutahasislik2", value: "mutahasislik2" },
-        { name: "Mutahasislik3", value: "mutahasislik3" },
-        { name: "Mutahasislik4", value: "mutahasislik4" },
-        { name: "Mutahasislik5", value: "mutahasislik5" },
-        { name: "Mutahasislik6", value: "mutahasislik6" },
-        { name: "Mutahasislik7", value: "mutahasislik7" },
-        { name: "Mutahasislik8", value: "mutahasislik8" },
-        { name: "Mutahasislik9", value: "mutahasislik9" },
-        { name: "Mutahasislik10", value: "mutahasislik10" },
-        { name: "Mutahasislik11", value: "mutahasislik11" },
-        { name: "Mutahasislik12", value: "mutahasislik12" },
-        { name: "Mutahasislik13", value: "mutahasislik13" },
-        { name: "Mutahasislik14", value: "mutahasislik14" },
-        { name: "Mutahasislik15", value: "mutahasislik15" },
-        { name: "Mutahasislik16", value: "mutahasislik16" },
-        { name: "Mutahasislik17", value: "mutahasislik17" },
-      ],
       isVisible: false,
       getCount: 0,
+      coontLimit: 20,
+      constSearch: "",
+      filterSearch: "",
     };
   },
+  computed: {
+    ...mapState({
+      contList: (state) => state.contragents.contList,
+      contId: (state) => state.contragents.contId,
+      page: (state) => state.contragents.page,
+      search: (state) => state.contragents.search,
+    }),
+  },
+  watch: {
+    mutahasislik(e) {
+      if (e != null) this.setConstId(this.mutahasislik.id);
+      else this.setConstId("");
+    },
+    contId() {
+      this.setPage(0);
+      this.getListLawyers();
+    },
+    filterSearch(e) {
+      this.setSearch(e);
+      this.getListLawyers();
+    },
+  },
   methods: {
+    ...mapActions({
+      getLawyers: "contragents/getListLawyers",
+      getContragents: "contragents/getContragents",
+    }),
+    ...mapMutations({
+      setConstId: "contragents/setConstId",
+      setPage: "contragents/setPage",
+      setSearch: "contragents/setSearch",
+    }),
     nameWithLang({ name }) {
       return `${name}`;
     },
     onScroll(e) {
       console.log(e);
     },
+    async mountedStart() {
+      await this.contragentsList();
+      await this.getListLawyers();
+    },
+    async contragentsList() {
+      let contData = {
+        limit: this.coontLimit,
+        page: 0,
+        search: this.constSearch,
+      };
+      await this.getContragents(contData);
+    },
+    async getListLawyers() {
+      let data = {
+        page: this.page,
+        limit: 20,
+      };
+      let querys = {
+        search: this.search,
+        status: "",
+        contragentId: this.contId,
+        regionId: "",
+      };
+      await this.getLawyers({ querys, data });
+    },
+  },
+  created() {
+    this.mountedStart();
+    this.filterSearch = this.search;
   },
   mounted() {
-    let scrolWrap = document.querySelectorAll(".multiselect__content-wrapper");
+    let scrolWrap = document.querySelectorAll(
+      ".contragentsSelect .multiselect__content-wrapper"
+    );
     scrolWrap.forEach((item) => {
       item.addEventListener("scroll", () => {
         let sb = item.querySelector(".multiselect__content");
         if (+item.offsetHeight + item.scrollTop >= sb.offsetHeight && this.getCount < 1) {
           this.getCount++;
-          this.optionsMutahasislik = [
-            ...this.optionsMutahasislik,
-            ...this.optionsMutahasislik,
-          ];
+          this.coontLimit += 20;
+          this.contragentsList();
           this.getCount = 0;
-          console.log(this.optionsMutahasislik);
         }
       });
     });
@@ -153,6 +203,12 @@ section.filter {
 }
 .multiselect__single {
   @apply text-bgdarkblue;
+  flex: 1;
+  width: 100%;
+  max-height: 100px;
+  white-space: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .my_multiselect {
   .multiselect__tags {

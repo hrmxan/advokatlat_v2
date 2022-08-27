@@ -1,12 +1,20 @@
 import ApiService from "./api.service";
+// const main = "lawyer";
 
-
-//contragent/list?search=&typeId=&isArchive=false&regionId=
 export default {
-  contragents(search = "", typeId = "", isArchive = false, regionId = "", data) {
-    return ApiService.post(`contragent/list?search=${search}&typeId=${typeId}&isArchive=${isArchive}&regionId=${regionId}`, data);
-  }
-}
-
-// https://api-lawyer.adliya.uz/api/v.1/contragent/list?search=&typeId=&isArchive=false&regionId=
-// https://api-lawyer.adliya.uz/api/v.1/contragent/list?search=&typeId=&isArchive=false&regionId=
+  getListLawyers(data) {
+    return ApiService.post(
+      `lawyer/list?search=${data.querys.search}&status=${data.querys.status}&contragentId=${data.querys.contragentId}&regionId=${data.querys.regionId}`,
+      data.data
+    );
+  },
+  getListContragents(data) {
+    return ApiService.post(
+      `contragent/list?search=${data.search}&typeId=&isArchive=false&regionId=`,
+      {
+        page: data.page,
+        limit: data.limit,
+      }
+    );
+  },
+};

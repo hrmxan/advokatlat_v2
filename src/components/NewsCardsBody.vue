@@ -1,6 +1,6 @@
 <template>
   <section class="pt-10">
-    <div class="container mx-auto px-3 mb-8">
+    <div v-if="newslist || newslist != {}" class="container mx-auto px-3 mb-8">
       <strong>{{ $t("news") }}</strong>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 -mx-3 mt-8">
         <div
@@ -24,6 +24,11 @@
           <div class="next"></div>
         </div>
       </div> -->
+    </div>
+    <div v-else class="container mx-auto px-3 mb-8 min-h-screen">
+      <h1 class="text-bgdarkblue text-xl">
+        {{ $t("noNewsYet") }}
+      </h1>
     </div>
   </section>
 </template>

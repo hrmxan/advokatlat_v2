@@ -102,8 +102,8 @@ svg {
   color: #fff;
   font-family: Roboto;
   font-weight: 300;
+  flex-direction: column;
   @media (max-width: 800px) {
-    flex-direction: column;
     align-items: center;
     width: 100%;
   }
