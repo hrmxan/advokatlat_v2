@@ -1,8 +1,8 @@
 export default {
   langs: {
-    uz: "Uz",
-    ru: "Ru",
-    en: "En",
+    uz: "O'zbek",
+    ru: "Русский",
+    en: "English",
   },
   logIn: "Kirish",
   hello: "Assalamu alaykum",
@@ -80,4 +80,32 @@ export default {
   lawFirm: "Advokatlar firmasi",
   countLawyer: "Advokatlar soni",
   lawyerPanel: "Advokatlar hay'ati",
+  prezidentUz: {
+    title: "O'zbekiston Respublikasi Prezidenti",
+    poster: "President.uz O'zbekiston Respublikasi Prezidenti portaliga o'tish",
+    link: "https://president.uz",
+  },
+  goUz: {
+    title: "O'zbekiston Respublikasi Hukumat portali",
+    poster: "Go.uz O'zbekiston Respublikasi Hukumat portaliga o'tish",
+    link: "https://go.uz",
+  },
+  parliamentUz: {
+    title: "O'zbekiston Rspublikasi Oliy Majlisi Qonunchilik Palatasi",
+    poster:
+      "Parliament.gov.uz O'zbekiston Rspublikasi Oliy Majlisi Qonunchilik Palatasi portaliga o'tish",
+    link: "https://parliament.gov.uz/",
+  },
+  senatUz: {
+    title: "O'zbekiston Respublikasi Oliy Majlisining Senati",
+    poster:
+      "Senat.gov.uz O'zbekiston Respublikasi Oliy Majlisining Senati portaliga o'tish",
+    link: "https://senat.gov.uz/",
+  },
+  lexUz: {
+    title: "O'zbekiston Respublikasi qonunchilik ma'lumotlari milliy bazasi",
+    poster:
+      "Lex.uz O'zbekiston Respublikasi qonunchilik ma'lumotlari milliy bazasi postaliga o'tish",
+    link: "https://lex.uz/",
+  },
 };

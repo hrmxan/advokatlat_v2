@@ -59,10 +59,11 @@
             for="lang_input"
             class="langs flex items-center justify-center h-full mr-2 relative cursor-pointer"
           >
+            <img class="w-5" :src="require(`@/assets/img/${lang}.png`)" />
             <span
               @click="drobdawn = !drobdawn"
-              class="flex items-center justify-center px-5 h-full"
-              >{{ lang }}</span
+              class="flex items-center justify-center pr-5 pl-2 h-full"
+              >{{ $t(`langs.${lang}`) }}</span
             >
             <div class="drobdawn absolute top-full right-0" :class="{ close: drobdawn }">
               <ul class="flex flex-col">
@@ -128,12 +129,12 @@ export default {
     changeLang(l) {
       localStorage.setItem("lang", l);
       this.$i18n.locale = l;
-      this.lang = this.$t(`langs.${l}`);
+      this.lang = l;
       this.drobdawn = true;
     },
   },
   created() {
-    this.lang = this.$t(`langs.${this.$i18n.locale}`);
+    this.lang = this.$i18n.locale;
   },
   mounted() {
     this.scrolingHeader();

@@ -1,12 +1,24 @@
 <template>
-  <router-link to="/news/minicard">
-    <h2>We have you covered during this time of crisis.</h2>
-    <p>Visit our COVID-19 Resource Center</p>
-  </router-link>
+  <a :href="to">
+    <h2>{{ title }}</h2>
+    <p>{{ poster }}</p>
+  </a>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    title: {
+      type: String,
+    },
+    poster: {
+      type: String,
+    },
+    to: {
+      type: String,
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

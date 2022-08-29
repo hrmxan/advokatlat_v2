@@ -1,12 +1,24 @@
 <template>
-  <router-link to="/news/big" class="mb-4">
-    <h2 class="mb-4">Talent Mandatory. Office Optional.</h2>
-    <p>View our work from anywhere policy</p>
-  </router-link>
+  <a :href="to" class="mb-4">
+    <h2 class="mb-4">{{ title }}</h2>
+    <p>{{ poster }}</p>
+  </a>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    title: {
+      type: String,
+    },
+    poster: {
+      type: String,
+    },
+    to: {
+      type: String,
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

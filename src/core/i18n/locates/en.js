@@ -1,9 +1,9 @@
 export default {
   // english from uz
   langs: {
-    uz: "Uz",
-    ru: "Ru",
-    en: "En",
+    uz: "O'zbek",
+    ru: "Русский",
+    en: "English",
   },
   logIn: "Login",
   hello: "Hello",
@@ -80,4 +80,35 @@ export default {
   lawFirm: "A firm of lawyers",
   countLawyer: "Number of lawyers",
   lawyerPanel: "Panel of lawyers",
+  prezidentUz: {
+    title: "President of the Republic of Uzbekistan",
+    poster:
+      "Go to President.uz portal of the President of the Republic of Uzbekistan",
+    link: "https://president.uz",
+  },
+  goUz: {
+    title: "Government portal of the Republic of Uzbekistan",
+    poster: "Go.uz Go to the Government portal of the Republic of Uzbekistan",
+    link: "https://go.uz",
+  },
+  parliamentUz: {
+    title:
+      "Legislative Chamber of the Oliy Majlis of the Republic of Uzbekistan",
+    poster:
+      "Parliament.gov.uz Go to the portal of the Legislative Chamber of the Oliy Majlis of the Republic of Uzbekistan",
+    link: "https://parliament.gov.uz/",
+  },
+  senatUz: {
+    title: "Senate of the Oliy Majlis of the Republic of Uzbekistan",
+    poster:
+      "Senat.gov.uz Go to the portal of the Senate of the Oliy Majlis of the Republic of Uzbekistan",
+    link: "https://senat.gov.uz/",
+  },
+  lexUz: {
+    title:
+      "National database of legislative information of the Republic of Uzbekistan",
+    poster:
+      "Go to Lex.uz national database of legislative information of the Republic of Uzbekistan",
+    link: "https://lex.uz/",
+  },
 };
