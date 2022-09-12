@@ -10,6 +10,8 @@ const state = {
   contId: "",
   isLoading: false,
   countInfo: "",
+  regionId: "",
+  regions: [],
 };
 
 const getters = {};
@@ -17,6 +19,9 @@ const getters = {};
 const mutations = {
   setList(state, list) {
     state.list = list;
+  },
+  setRegId(state, id) {
+    state.regionId = id;
   },
   setSearch(state, search) {
     state.search = search;
@@ -36,6 +41,9 @@ const mutations = {
   setCountInfo(state, countInfo) {
     state.countInfo = countInfo;
   },
+  regions(state, regions) {
+    state.regions = regions[0]?.children;
+  },
 };
 
 const actions = {
@@ -45,6 +53,16 @@ const actions = {
     try {
       res = await contragents.getListLawyers(data);
       commit("setList", res.data);
+    } finally {
+      commit("setLoading", false);
+    }
+  },
+  async getRegions({ commit }, data) {
+    commit("setLoading", true);
+    let res;
+    try {
+      res = await contragents.regions(data);
+      commit("regions", res.data);
     } finally {
       commit("setLoading", false);
     }

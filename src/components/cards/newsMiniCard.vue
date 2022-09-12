@@ -1,5 +1,5 @@
 <template>
-  <a :href="to">
+  <a class="h-full" :href="to">
     <h2>{{ title }}</h2>
     <p>{{ poster }}</p>
   </a>

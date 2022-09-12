@@ -37,6 +37,7 @@ export default {
 .body {
   display: flex;
   flex-direction: column;
+  max-width: 100%;
   strong {
     color: #929292;
     font-family: "Lato", sans-serif;

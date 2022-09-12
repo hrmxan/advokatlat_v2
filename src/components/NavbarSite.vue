@@ -9,17 +9,17 @@
           </a>
         </div>
         <ul class="flex flex-col">
-          <li class="flex w-full items-center">
+          <li @click="sidebarColapse = false" class="flex w-full items-center">
             <router-link class="w-full px-4 py-3" to="/">
               {{ $t("home") }}
             </router-link>
           </li>
-          <li class="flex w-full items-center">
+          <li @click="sidebarColapse = false" class="flex w-full items-center">
             <router-link class="w-full px-4 py-3" to="/news">
               {{ $t("news") }}
             </router-link>
           </li>
-          <li class="flex w-full items-center">
+          <li @click="sidebarColapse = false" class="flex w-full items-center">
             <router-link class="w-full px-4 py-3" to="/lawyers">
               {{ $t("lawyers") }}
             </router-link>
@@ -55,6 +55,7 @@
           </ul>
         </div>
         <div class="tools flex items-center">
+          <div v-if="!drobdawn" @click="drobdawn = true" class="dropdwon__mask"></div>
           <label
             for="lang_input"
             class="langs flex items-center justify-center h-full mr-2 relative cursor-pointer"
@@ -148,6 +149,15 @@ export default {
 }
 header {
   z-index: 200;
+}
+
+.dropdwon__mask {
+  display: flex;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
 }
 .border {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);

@@ -1,6 +1,7 @@
 <template>
   <section>
-    <div class="container mx-auto px-3">
+    <div class="container mx-auto px-3 mb-8">
+      <not-found v-if="lawyersList.list == ''"></not-found>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 -mx-3">
         <div
           class="col-span-1 px-3 mb-5"
@@ -17,7 +18,7 @@
           />
         </div>
       </div>
-      <div class="pagination my-8">
+      <div v-if="lawyersList.list != ''" class="pagination my-8">
         <div class="pagination-wrap">
           <div class="prev" @click="page > 0 ? setPage(page - 1) : true"></div>
           <div class="count">
@@ -40,8 +41,9 @@
 import lawyerCard from "./cards/lawyerCard.vue";
 import { mapState, mapActions, mapMutations } from "vuex";
 import localeKey from "@/core/localKey";
+import NotFound from "@/components/notFound.vue";
 export default {
-  components: { lawyerCard },
+  components: { lawyerCard, NotFound },
   data() {
     return {
       coontLimit: 20,
@@ -53,6 +55,7 @@ export default {
       lawyersList: (state) => state.contragents.list,
       page: (state) => state.contragents.page,
       contId: (state) => state.contragents.contId,
+      regionId: (state) => state.contragents.regionId,
       search: (state) => state.contragents.search,
     }),
   },
@@ -83,7 +86,7 @@ export default {
         search: this.search,
         status: "",
         contragentId: this.contId,
-        regionId: "",
+        regionId: this.regionId,
       };
       await this.getLawyers({ querys, data });
     },

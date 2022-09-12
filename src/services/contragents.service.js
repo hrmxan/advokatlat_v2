@@ -21,4 +21,7 @@ export default {
   countInfo() {
     return ApiService.post(`contragent/count-info`);
   },
+  regions() {
+    return ApiService.post(`directoryRegion/list`);
+  },
 };

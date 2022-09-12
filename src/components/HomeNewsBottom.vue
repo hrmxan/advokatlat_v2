@@ -29,7 +29,7 @@
         </div>
         <div
           data-aos="fade-up"
-          :data-aos-delay="0"
+          :data-aos-delay="200"
           class="col-span-12 mb-4 md:col-span-4 px-4"
         >
           <news-mini-card
@@ -40,7 +40,7 @@
         </div>
         <div
           data-aos="fade-up"
-          :data-aos-delay="0"
+          :data-aos-delay="400"
           class="col-span-12 mb-4 md:col-span-4 px-4"
         >
           <news-mini-card

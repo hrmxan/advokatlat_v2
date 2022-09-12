@@ -2,7 +2,7 @@
   <section class="filter mb-5 pb-5 -mt-6">
     <div class="container mx-auto px-3">
       <form>
-        <div class="form-row grid grid-cols-1 sm:grid-cols-3 -mx-3">
+        <div class="form-row grid grid-cols-1 sm:grid-cols-2 -mx-3">
           <div class="col-span-1 sm:col-span-3 px-3 mb-5 my_multiselect">
             <input
               v-model="filterSearch"
@@ -14,21 +14,10 @@
           <div class="col-span-1 px-3 my_multiselect my-3">
             <multiselect
               v-model="viloyat"
-              :options="options"
-              :custom-label="nameWithLang"
+              :options="regions"
+              :custom-label="nameRegion"
               :show-labels="false"
               :placeholder="$t('region')"
-            >
-              <template slot="noResult">{{ $t("noInfoFound") }}</template>
-            </multiselect>
-          </div>
-          <div class="col-span-1 px-3 my_multiselect my-3">
-            <multiselect
-              v-model="tashkilot"
-              :options="optionsTashkilot"
-              :custom-label="nameWithLang"
-              :show-labels="false"
-              :placeholder="$t('organization')"
             >
               <template slot="noResult">{{ $t("noInfoFound") }}</template>
             </multiselect>
@@ -56,6 +45,7 @@
 <script>
 import Multiselect from "vue-multiselect";
 import { mapState, mapActions, mapMutations } from "vuex";
+import localeKey from "@/core/localKey";
 import "vue-multiselect/dist/vue-multiselect.min.css";
 export default {
   components: { Multiselect },
@@ -85,16 +75,32 @@ export default {
     ...mapState({
       contList: (state) => state.contragents.contList,
       contId: (state) => state.contragents.contId,
+      regionId: (state) => state.contragents.regionId,
+      regions: (state) => state.contragents.regions,
       page: (state) => state.contragents.page,
       search: (state) => state.contragents.search,
     }),
+    regList: function () {
+      let list = [];
+      this.regions.forEach((region) => {
+        console.log(region);
+      });
+      return list;
+    },
   },
   watch: {
     mutahasislik(e) {
       if (e != null) this.setConstId(this.mutahasislik.id);
       else this.setConstId("");
     },
+    viloyat(e) {
+      this.setRegId(e.id);
+    },
     contId() {
+      this.setPage(0);
+      this.getListLawyers();
+    },
+    regionId() {
       this.setPage(0);
       this.getListLawyers();
     },
@@ -108,14 +114,23 @@ export default {
       getLawyers: "contragents/getListLawyers",
       getContragents: "contragents/getContragents",
       countInfo: "contragents/countInfo",
+      getRegions: "contragents/getRegions",
     }),
     ...mapMutations({
       setConstId: "contragents/setConstId",
       setPage: "contragents/setPage",
       setSearch: "contragents/setSearch",
+      setRegId: "contragents/setRegId",
     }),
+    localeKey,
+    localLang(key) {
+      return this.localeKey(key, this.$i18n.locale);
+    },
     nameWithLang({ name }) {
       return `${name}`;
+    },
+    nameRegion(a) {
+      return a[`${this.localLang("name")}`];
     },
     onScroll(e) {
       console.log(e);
@@ -142,7 +157,7 @@ export default {
         search: this.search,
         status: "",
         contragentId: this.contId,
-        regionId: "",
+        regionId: this.regionId,
       };
       await this.getLawyers({ querys, data });
     },
@@ -150,6 +165,7 @@ export default {
   created() {
     this.mountedStart();
     this.filterSearch = this.search;
+    this.getRegions();
   },
   mounted() {
     let scrolWrap = document.querySelectorAll(
@@ -199,6 +215,9 @@ section.filter {
   box-shadow: 0 0 10px rgb(0 0 0 / 11%);
   padding: 30px 0;
 }
+.multiselect__option {
+  white-space: pre-wrap;
+}
 // change multiselect item hover color
 .multiselect__option--highlight {
   background-color: rgb(0, 107, 232);
@@ -208,7 +227,7 @@ section.filter {
   flex: 1;
   width: 100%;
   max-height: 100px;
-  white-space: wrap;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }

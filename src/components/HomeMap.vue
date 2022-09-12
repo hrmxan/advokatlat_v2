@@ -101,4 +101,8 @@ section.map {
     z-index: 1 !important;
   }
 }
+.leaflet-bottom.leaflet-right {
+  display: none !important;
+  visibility: hidden !important;
+}
 </style>

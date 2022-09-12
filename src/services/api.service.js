@@ -2,7 +2,6 @@ import axios from "axios";
 // import store from "../store/index";
 // import bus from "../main";
 
-
 let messageShow = true;
 
 const ApiService = {
@@ -24,18 +23,13 @@ const ApiService = {
   mount401Interceptor() {
     axios.interceptors.response.use(
       (response) => {
-        console.log("INTERSEPTOR ICHIDA RES", response);
+        console.log("RES", response);
         return response;
       },
       async (error) => {
-        console.log("INTERSEPTOR ICHIDA ERROR", error.response.status);
-        this.i++;
-        if (this.i == 1 && messageShow) {
-          console.log("INTERSEPTOR ICHIDA ERROR", error.response.status);
-        }
-        this.i = 0;
+        if (messageShow) console.log("ERROR", error);
         throw error;
-      },
+      }
     );
   },
 
@@ -43,7 +37,6 @@ const ApiService = {
     // Eject the interceptor
     axios.interceptors.response.eject(this._40i1nterceptor);
   },
-}
-
+};
 
 export default ApiService;
