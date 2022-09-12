@@ -34,9 +34,9 @@
 </template>
 
 <script>
-import newsCard from "./cards/newsCard.vue";
+import newsCard from "@/views/news/components/newsCard.vue";
 import { mapState, mapActions } from "vuex";
-import localeKey from "../core/localKey";
+import localeKey from "@/core/localKey";
 
 export default {
   components: { newsCard },

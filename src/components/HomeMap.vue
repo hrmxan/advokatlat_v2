@@ -9,7 +9,7 @@
       >
         <l-tile-layer :url="url" :icon="icon"></l-tile-layer>
         <l-marker :lat-lng="markerLatLng" :icon="icon"></l-marker>
-        <l-marker :lat-lng="markerLatLng2" :icon="icon"></l-marker>
+        <!-- <l-marker :lat-lng="markerLatLng2" :icon="icon"></l-marker> -->
         <l-geo-json :geojson="geoMap" :options="options" :options-style="styleFunction" />
       </l-map>
     </div>

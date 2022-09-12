@@ -1,8 +1,31 @@
+// import Vue from "vue";
+// import toast from "vue-toastification";
 import axios from "axios";
 // import store from "../store/index";
 // import bus from "../main";
 
+// Vue.use(toast, {
+//   transition: "Vue-Toastification__bounce",
+//   maxToasts: 30,
+//   newestOnTop: true,
+// });
+
 let messageShow = true;
+
+// let options = {
+//   position: "top-right",
+//   timeout: 5000,
+//   closeOnClick: true,
+//   pauseOnFocusLoss: true,
+//   pauseOnHover: true,
+//   draggable: true,
+//   draggablePercent: 0.6,
+//   showCloseButtonOnHover: false,
+//   hideProgressBar: false,
+//   closeButton: "button",
+//   icon: true,
+//   rtl: false,
+// };
 
 const ApiService = {
   init(baseURL) {
@@ -23,11 +46,14 @@ const ApiService = {
   mount401Interceptor() {
     axios.interceptors.response.use(
       (response) => {
-        console.log("RES", response);
+        // console.log(toast.success("salom", options));
+
         return response;
       },
       async (error) => {
-        if (messageShow) console.log("ERROR", error);
+        if (messageShow) {
+          throw error;
+        }
         throw error;
       }
     );

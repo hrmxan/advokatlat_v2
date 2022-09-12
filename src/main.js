@@ -31,6 +31,7 @@ Vue.use(myToast);
 
 import ApiService from "./services/api.service";
 ApiService.init(process.env.VUE_APP_ROOT_API);
+ApiService.mount401Interceptor();
 
 export const bus = new Vue();
 

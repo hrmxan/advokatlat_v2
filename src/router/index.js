@@ -21,17 +21,17 @@ const routes = [
       {
         path: "news",
         name: "News",
-        component: () => import("@/views/NewsView.vue"),
+        component: () => import("@/views/news/NewsView.vue"),
         children: [
           {
             path: "",
             name: "NewsMain",
-            component: () => import("@/views/NewsMain.vue"),
+            component: () => import("@/views/news/pages/NewsMain.vue"),
           },
           {
             path: ":id",
             name: "NewsItem",
-            component: () => import("@/views/NewsItem.vue"),
+            component: () => import("@/views/news/pages/NewsItem.vue"),
           },
           {
             path: "*",
@@ -42,7 +42,7 @@ const routes = [
       {
         path: "lawyers",
         name: "Lawyers",
-        component: () => import("@/views/LawyersView.vue"),
+        component: () => import("@/views/lawyers/LawyersView.vue"),
       },
       {
         path: "*",

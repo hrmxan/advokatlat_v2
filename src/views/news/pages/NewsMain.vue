@@ -1,22 +1,20 @@
 <template>
   <main>
     <section class="nav_mask"></section>
-    <lawters-filter />
-    <lawyers-body />
+    <NewsCardsBody />
   </main>
 </template>
 
 <script>
-import LawtersFilter from "@/components/LawtersFilter.vue";
-import LawyersBody from "@/components/LawyersBody.vue";
+import NewsCardsBody from "@/views/news/sections/NewsCardsBody.vue";
 export default {
-  components: { LawtersFilter, LawyersBody },
+  components: { NewsCardsBody },
 };
 </script>
 
 <style scoped lang="scss">
 section.nav_mask {
-  height: 168px;
+  height: 84px;
   background-image: url("@/assets/img/header-bg.jpg");
   background-size: cover;
   background-position: center;

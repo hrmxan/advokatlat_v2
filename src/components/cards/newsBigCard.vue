@@ -1,5 +1,5 @@
 <template>
-  <a :href="to" class="mb-4">
+  <a :href="to" class="h-full">
     <h2 class="mb-4">{{ title }}</h2>
     <p>{{ poster }}</p>
   </a>
@@ -37,6 +37,7 @@ a {
 }
 h2 {
   font-size: calc(38px + 7 * ((100vw - 350px) / 850));
+  word-break: break-all;
 }
 p {
   color: #c0cf13;

@@ -2,14 +2,14 @@
   <section class="bg-bgdarkblue pt-20 pb-20 overflow-hidden">
     <div class="container px-3 mx-auto">
       <div class="grid grid-cols-12 -mx-4">
-        <div data-aos="fade-right" class="col-span-12 md:col-span-6 px-4">
+        <div data-aos="fade-right" class="col-span-12 md:col-span-6 px-4 mb-5">
           <news-big-card
             :to="$t('prezidentUz.link')"
             :title="$t('prezidentUz.title')"
             :poster="$t('prezidentUz.poster')"
           ></news-big-card>
         </div>
-        <div data-aos="fade-left" class="col-span-12 md:col-span-6 px-4">
+        <div data-aos="fade-left" class="col-span-12 md:col-span-6 px-4 mb-5">
           <news-big-card
             :to="$t('goUz.link')"
             :title="$t('goUz.title')"

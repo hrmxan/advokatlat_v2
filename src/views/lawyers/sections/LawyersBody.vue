@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import lawyerCard from "./cards/lawyerCard.vue";
+import lawyerCard from "@/views/lawyers/components/lawyerCard.vue";
 import { mapState, mapActions, mapMutations } from "vuex";
 import localeKey from "@/core/localKey";
 import NotFound from "@/components/notFound.vue";

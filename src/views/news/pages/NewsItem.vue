@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import news from "../services/directory-post.service";
+import news from "@/services/directory-post.service";
 import localeKey from "@/core/localKey";
 
 export default {
