@@ -86,7 +86,27 @@
             class="flex items-center h-full p-2 ml-2"
             href="https://id.egov.uz/?client_id=e-advokat&token_id=538b3314-4e81-4171-8366-4fa02c0390d4&method=IDPW"
           >
-            {{ $t("logIn") }}
+            <span v-if="!user">{{ $t("logIn") }}</span>
+            <span
+              class="flex items-center border-2 p-1 rounded-sm text-baseyellow border-baseyellow"
+              v-else
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#c0cf13"
+                class="bi bi-person-circle mr-2"
+                viewBox="0 0 16 16"
+              >
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                <path
+                  fill-rule="evenodd"
+                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+                />
+              </svg>
+              {{ user }}
+            </span>
           </a>
           <a
             @click.prevent="sidebarColapse = true"
@@ -104,6 +124,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   data() {
     return {
@@ -115,6 +136,13 @@ export default {
       sidebarColapse: false,
       WinPrint: null,
     };
+  },
+  computed: {
+    ...mapState({
+      user: (state) => {
+        return state.user.userData.userLogin;
+      },
+    }),
   },
   methods: {
     scrolingHeader() {

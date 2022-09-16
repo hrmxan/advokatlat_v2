@@ -8,6 +8,7 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 import toast from "vue-toastification";
 import myToast from "./core/toas.options";
+import Vuelidate from "vuelidate";
 
 // css
 import "@/assets/scss/index.scss";
@@ -28,6 +29,7 @@ Vue.use(toast, {
   newestOnTop: true,
 });
 Vue.use(myToast);
+Vue.use(Vuelidate);
 // import { TokenService } from "@/services/store.service";
 
 import ApiService from "./services/api.service";

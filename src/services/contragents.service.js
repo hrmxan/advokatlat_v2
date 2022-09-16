@@ -5,7 +5,7 @@ import ApiService from "./api.service";
 export default {
   getListLawyers(data) {
     return ApiService.post(
-      `lawyer/list?search=${data.querys.search}&status=${data.querys.status}&contragentId=${data.querys.contragentId}&regionId=${data.querys.regionId}`,
+      `getInfo/lawyerList?search=${data.querys.search}&status=${data.querys.status}&contragentId=${data.querys.contragentId}&regionId=${data.querys.regionId}`,
       data.data
     );
   },

@@ -42,12 +42,19 @@
           </button>
         </div>
         <!-- Modal body -->
-        <div class="p-6 space-y-6 flex-grow">
-          <embed
-            class="w-full min-h-full"
-            type="file/pdf"
-            :src="api2 + '/' + res.uploadPath"
+        <div class="p-6 space-y-6 flex flex-col justify-center items-center flex-grow">
+          <!-- :src="url + '/' + res.uploadPath" -->
+          <img
+            class="w-full h-full object-contain"
+            v-if="fileType(res.fileType) == 'img'"
+            :src="url + '/' + res.uploadPath"
           />
+          <embed
+            v-else
+            class="w-full min-h-full flex-grow"
+            :src="url + '/' + res.uploadPath"
+          />
+          <!-- <iframe src="@/assets/files/demo.pdf" width="100%" height="500px"> </iframe> -->
         </div>
         <!-- Modal footer -->
       </div>
@@ -56,13 +63,17 @@
 </template>
 
 <script>
-const api2 = process.env.VUE_APP_ROOT_API2;
+const url = process.env.VUE_APP_ROOT_URL;
 export default {
   components: {},
   data() {
     return {
       form: [],
-      api2,
+      url,
+      types: {
+        img: ["jpg", "png", "gif"],
+        docs: ["pdf", "doc", "docx"],
+      },
     };
   },
   props: {
@@ -82,6 +93,10 @@ export default {
     },
     coleModal() {
       this.$emit("close", false);
+    },
+    fileType(type) {
+      if (this.types.img.indexOf(type) >= 0) return "img";
+      else return "docm";
     },
   },
 };
