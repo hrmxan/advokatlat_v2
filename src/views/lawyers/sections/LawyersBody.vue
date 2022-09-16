@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="container mx-auto px-3 mb-8">
-      <not-found v-if="lawyersList.list == ''"></not-found>
+      <not-found v-if="lawyersList.list == '' || lawyersList?.length == 0"></not-found>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 -mx-3">
         <div
           class="col-span-1 px-3 mb-5"

@@ -82,6 +82,7 @@
             </div>
           </label>
           <a
+            @click.prevent="openOneId"
             class="flex items-center h-full p-2 ml-2"
             href="https://id.egov.uz/?client_id=e-advokat&token_id=538b3314-4e81-4171-8366-4fa02c0390d4&method=IDPW"
           >
@@ -112,6 +113,7 @@ export default {
       langs: ["uz", "en", "ru"],
       drobdawn: true,
       sidebarColapse: false,
+      WinPrint: null,
     };
   },
   methods: {
@@ -123,6 +125,21 @@ export default {
           this.scrolHeader = false;
         }
       });
+    },
+    openOneId() {
+      this.WinPrint = window.open(
+        "https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=e-advokat&redirect_uri=http://localhost:1000/oneId&scope=e-advokat&state=eyJtZXRob2QiOiJJRFBXIn0=",
+        "_self",
+        "One Id",
+        "left=0,top=0,width=1000,height=1000,toolbar=0,scrollbars=0,status=0"
+      );
+      console.log("WinPrint bu", this.WinPrint);
+      // this.WinPrint = window.open(
+      //   "https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=e-advokat&redirect_uri=https://e-advokat.uz/oneId&scope=e-advokat&state=eyJtZXRob2QiOiJJRFBXIn0=",
+      //   "_self",
+      //   "One Id",
+      //   "left=0,top=0,width=1000,height=1000,toolbar=0,scrollbars=0,status=0",
+      // );
     },
     routeHome() {
       this.$router.push("/");

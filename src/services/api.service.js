@@ -1,6 +1,7 @@
 // import Vue from "vue";
 // import toast from "vue-toastification";
 import axios from "axios";
+import { TokenService } from "@/services/store.service";
 // import store from "../store/index";
 // import bus from "../main";
 
@@ -31,6 +32,11 @@ const ApiService = {
   init(baseURL) {
     axios.defaults.baseURL = baseURL;
   },
+  setHeader() {
+    axios.defaults.headers.common[
+      "Authorization"
+    ] = `Bearer ${TokenService.getToken()}`;
+  },
   removeHeader() {
     axios.defaults.headers.common = {};
   },
@@ -41,6 +47,13 @@ const ApiService = {
   post(resource, data, showMes = true) {
     messageShow = showMes;
     return axios.post(resource, data);
+  },
+  formData(resource, data) {
+    return axios.post(resource, data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   },
 
   mount401Interceptor() {

@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="home min-h-screen flex flex-col">
     <navbar-site></navbar-site>
-    <router-view></router-view>
+    <router-view class="grow home__view"></router-view>
     <footer-site></footer-site>
   </div>
 </template>
@@ -14,4 +14,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.home__view {
+  flex-grow: 1;
+}
+</style>

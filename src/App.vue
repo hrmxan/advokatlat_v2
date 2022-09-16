@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <loader v-if="isLoading" />
+    <loader v-if="isLoading || isLoadingUser" />
     <router-view />
   </div>
 </template>
@@ -16,6 +16,9 @@ export default {
     ...mapState({
       isLoading: (state) => {
         return state.news.isLoading;
+      },
+      isLoadingUser: (state) => {
+        return state.user.isLoading;
       },
     }),
   },

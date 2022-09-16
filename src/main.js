@@ -28,10 +28,20 @@ Vue.use(toast, {
   newestOnTop: true,
 });
 Vue.use(myToast);
+// import { TokenService } from "@/services/store.service";
 
 import ApiService from "./services/api.service";
 ApiService.init(process.env.VUE_APP_ROOT_API);
 ApiService.mount401Interceptor();
+// if (TokenService.getToken()) {
+//   ApiService.setHeader();
+//   ApiService.mount401Interceptor();
+// }
+import miniload from "@/components/loadingMini.vue";
+Vue.component("mini-loading", miniload);
+
+import Util from "@/core/globalMethods";
+Vue.prototype.$localeKey = Util.localeKey;
 
 export const bus = new Vue();
 

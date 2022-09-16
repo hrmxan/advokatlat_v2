@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "@/views/HomeView.vue";
+import oneId from "@/components/oneId.vue";
 
 Vue.use(VueRouter);
 
@@ -33,10 +34,10 @@ const routes = [
             name: "NewsItem",
             component: () => import("@/views/news/pages/NewsItem.vue"),
           },
-          {
-            path: "*",
-            redirect: { name: "NotFound" },
-          },
+          // {
+          //   path: "*",
+          //   redirect: { name: "NotFound" },
+          // },
         ],
       },
       {
@@ -45,9 +46,33 @@ const routes = [
         component: () => import("@/views/lawyers/LawyersView.vue"),
       },
       {
-        path: "*",
-        redirect: { name: "NotFound" },
+        name: "oneId",
+        path: "/oneid",
+        component: oneId,
+        meta: {
+          public: true, // Allow access to even if not logged in
+          onlyWhenLoggedOut: true,
+        },
       },
+      {
+        path: "profile",
+        name: "Profile",
+        meta: {
+          auth: true,
+        },
+        component: () => import("@/views/profile/ProfileView.vue"),
+        // children: [
+        //   {
+        //     path: "",
+        //     name: "profileIndex",
+        //     component: () => import("@/views/profile/ProfileView.vue"),
+        //   },
+        // ],
+      },
+      // {
+      //   path: "*",
+      //   redirect: { name: "NotFound" },
+      // },
     ],
   },
   {
@@ -55,10 +80,10 @@ const routes = [
     name: "NotFound",
     component: () => import("@/views/NotFoundView.vue"),
   },
-  {
-    path: "*",
-    redirect: { name: "NotFound" },
-  },
+  // {
+  //   path: "*",
+  //   redirect: { name: "NotFound" },
+  // },
 ];
 
 const router = new VueRouter({
@@ -80,6 +105,13 @@ router.afterEach((to) => {
   Vue.nextTick(() => {
     document.title = to.meta.title || DEFAULT_TITLE;
   });
+});
+router.beforeEach((to, from, next) => {
+  console.log("to", to.meta?.auth);
+  const token = !!localStorage.getItem("token");
+  if (to.meta?.auth) {
+    token ? next() : next(`${from.path}`);
+  } else next();
 });
 
 export default router;

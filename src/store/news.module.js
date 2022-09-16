@@ -24,7 +24,7 @@ const actions = {
       res = await directoryPost.getList();
       commit("setList", res.data);
     } catch (e) {
-      console.log(e);
+      console.log("user module", e);
     } finally {
       commit("setLoading", false);
     }
